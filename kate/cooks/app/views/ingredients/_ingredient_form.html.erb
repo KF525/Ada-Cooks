@@ -1,0 +1,5 @@
+<%= form_for @ingredient do |f| %>
+  <%=f.text_field :name, placeholder: "Name of Ingredient"%>
+  <%=f.text_area :description, placeholder: "Description of Ingredient" %>
+  <%= f.submit %>
+<% end %>

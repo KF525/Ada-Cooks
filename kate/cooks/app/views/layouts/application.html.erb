@@ -6,6 +6,13 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
+<header>
+  <nav>
+    <%=link_to "Recipes", root_path %>
+    <%=link_to "Search" %>
+    <%=link_to "Login" %>
+  </nav>
+</header>
 <body>
 
 <%= yield %>

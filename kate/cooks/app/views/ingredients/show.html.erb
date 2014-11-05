@@ -1,0 +1,10 @@
+<table>
+  <tr>
+    <td><%= @ingredient.name %></td>
+    <td><%= @ingredient.description %></td>
+  </tr>
+</table>
+
+<%= link_to "Edit", edit_ingredient_path(id:@ingredient.id) %>
+<%= button_to "Delete", delete_ingredient_path(id:@ingredient.id), method: :delete %>
+<%= link_to "All Ingredients", ingredients_path %>

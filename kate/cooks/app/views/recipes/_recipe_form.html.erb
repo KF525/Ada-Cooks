@@ -1,0 +1,7 @@
+<%= form_for @recipe do |f| %>
+  <%=f.text_field :title, placeholder: "Title of Recipe"%>
+  <%=f.text_field :servings, placeholder: "Number of Servings" %>
+  <%=f.text_area :description, placeholder: "Description of Recipe" %>
+  <%=f.text_area :preparation, placeholder: "Directions" %>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,10 @@
+<table>
+  <% @recipes.each do |recipe| %>
+  <tr>
+    <td><%= link_to recipe.title, recipe_path(id:recipe.id) %></td>
+  </tr>
+  <tr>
+    <td><%= recipe.description %></td>
+  </tr>
+<% end %>
+</table>

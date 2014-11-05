@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <td><%= @recipe.title %></td>
+    <td><%= @recipe.servings %></td>
+    <td><%= @recipe.description %></td>
+    <td><%= @recipe.preparation %></td>
+  </tr>
+  <tr>
+    <td>
+      <% @usages.each do |usage| %>
+        <%= usage.ingredient.name %>:
+    </td>
+    <td><%= usage.amount %></td>
+    <td><%= usage.unit %>,</td>
+    <td><%= usage.format %></td>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<div>
+  <%= link_to "Edit", edit_recipe_path(id:@recipe.id) %>
+  <%= button_to "Delete", delete_recipe_path(id:@recipe.id), method: :delete %>
+</div>

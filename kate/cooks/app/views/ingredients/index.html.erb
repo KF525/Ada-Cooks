@@ -1,3 +1,4 @@
+<% provide(:title, "Ingredients") %>
 
 <% @ingredients.each do |ingredient| %>
   <%=link_to ingredient.name, ingredient_path(id:ingredient.id) %>

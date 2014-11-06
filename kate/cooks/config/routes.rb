@@ -16,6 +16,16 @@ Rails.application.routes.draw do
   patch "recipes/:id",              to: "recipes#update",       as: :update_recipe
   delete "recipes/:id",             to: "recipes#destroy",      as: :delete_recipe
 
+  post "usages/:id",                to: "usages#create"
+  delete "usages/:id",              to: "usages#destroy",       as: :delete_usage
+
+  get "users",                      to: "users#index",          as: :users
+  get "users/new",                  to: "users#new",            as: :new_user
+  post "users",                     to: "users#create"
+  get "users/:id",                  to: "users#show",           as: :user
+  patch "users/:id",                to: "users#update",         as: :update_user
+  delete "users/:id",               to: "users#destroy",        as: :delete_user
+
   root "recipes#index"
 
 

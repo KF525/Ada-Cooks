@@ -20,6 +20,8 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @usages = Usage.where(recipe_id: params[:id])
+    num = @recipe.user_id
+    @user = User.find(num)
   end
 
   def edit

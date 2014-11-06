@@ -1,10 +1,16 @@
+<% provide(:title, @recipe.title) %>
+
 <table>
   <tr>
     <td><%= @recipe.title %></td>
-    <td><%= @recipe.servings %></td>
+    <td><%= @user.name %></td>
+    <td><%= @recipe.servings %> Servings</td>
     <td><%= @recipe.description %></td>
-    <td><%= @recipe.preparation %></td>
   </tr>
+</table>
+
+INGREDIENTS
+<table>
   <tr>
     <td>
       <% @usages.each do |usage| %>
@@ -13,9 +19,14 @@
     <td><%= usage.amount %></td>
     <td><%= usage.unit %>,</td>
     <td><%= usage.format %></td>
+    <td><%= button_to "Remove Ingredient", delete_usage_path(id:usage.id), method: :delete %>
       <% end %>
     </td>
   </tr>
+</table>
+
+<table>
+  <td><%= @recipe.preparation %></td>
 </table>
 
 <div>

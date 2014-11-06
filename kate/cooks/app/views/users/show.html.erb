@@ -1,0 +1,12 @@
+
+<%= @user.name %> Profile
+
+<%= @user.bio %>
+
+<table>
+<% @user.recipes.each do |recipe| %>
+  <tr>
+    <td><%= link_to recipe.title, recipe_path(id:recipe.id) %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,4 +1,4 @@
-class UsersController < ActiveRecord::Base
+class UsersController < ApplicationController
 
   def index
     @users = User.all
@@ -24,5 +24,6 @@ class UsersController < ActiveRecord::Base
   end
 
   def show
+    @user = User.find(params[:id])
   end
 end

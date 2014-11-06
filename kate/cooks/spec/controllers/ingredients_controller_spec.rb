@@ -1,4 +1,4 @@
-require 'rails-helper'
+require "rails_helper"
 
 describe IngredientsController do
 
@@ -8,4 +8,5 @@ describe IngredientsController do
     expect(kale.name).to eq("Kale")
     expect(kale.description).to eq("I'm green and leafy.")
   end
+  
 end

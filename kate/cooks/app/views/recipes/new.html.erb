@@ -1,14 +1,48 @@
-<%= form_tag recipes_path do %>
-  <%= text_field_tag "recipe_form[name]", nil, placeholder: "Title of Recipe"%>
-  <%= text_field_tag "recipe_form[servings]", nil, placeholder: "Number of Servings" %>
-  <%= text_area_tag "recipe_form[description]", nil, placeholder: "Short Description" %>
-  <%= text_area_tag "recipe_form[preparation]", nil, placeholder: "Directions" %>
-
-
-  <% Ingredient.all.each do |ingredient| %>
-      <%= check_box_tag "recipe_form[ingredients][], ingredient.id" %>
-      <%= label_tag "recipe_form[ingredients][]", ingredient.name %>
+<% provide(:title, "Create Recipe") %>
+<table>
+  <tbody>
+    <tr>
+      <td>
+      <%= form_tag recipes_path do %>
+        <%= text_field_tag "recipe_form[title]", nil, placeholder: "Title of Recipe"%>
+        <%= text_field_tag "recipe_form[servings]", nil, placeholder: "Number of Servings" %>
+        <%= text_area_tag "recipe_form[description]", nil, placeholder: "Short Description" %>
+        <%= text_area_tag "recipe_form[preparation]", nil, placeholder: "Directions" %>
+      <td>
+    </tr>
+    <% Ingredient.all.each do |ingredient| %>
+    <tr>
+      <td>
+        <%= check_box_tag "recipe_form[ingredients][][id]", ingredient.id %>
+        <%= label_tag "recipe_form[ingredients]", ingredient.name %>
+        <%= label_tag "recipe_form[ingredients]", "amount:" %>
+        <%= text_field_tag "recipe_form[ingredients][][amount]" %>
+        <%= label_tag "recipe_form[ingredients]", "unit:" %>
+        <%= text_field_tag "recipe_form[ingredients][][unit]" %>
+      </td>
+  </tr>
+    <% end %>
+    <tr>
+    <td>
+      <%= submit_tag %>
+    </td>
+  </tr>
   <% end %>
+  </tbody>
+</table>
 
-  <%= submit_tag %>
-<% end %>
+<table>
+  <tr>
+    <td>
+    Add Ingredient(s):
+    <%= form_tag recipes_path do %>
+      <%= text_field_tag "recipe_form[ingredient[name]]", nil, placeholder: "Ingredient Name"%>
+      <%= text_field_tag "recipe_form[ingredient[description]]", nil, placeholder: "Ingredient Description"%>
+  </td>
+  </tr>
+  <tr>
+
+  </tr>
+    <% end %>
+  </tbody>
+</table>

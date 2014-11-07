@@ -9,9 +9,9 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(params.require(:recipe).permit(:title, :servings, :description, :preparation))
-    if @recipe.save
-      redirect_to recipe_path(@recipe)
+    @recipe_form = RecipeForm.new(params[:recipe_form])
+    if @recipe_form.submit
+      redirect_to recipes_path(@recipe_form.recipe.id)
     else
       render :new
     end
@@ -20,8 +20,8 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @usages = Usage.where(recipe_id: params[:id])
-    num = @recipe.user_id
-    @user = User.find(num)
+    #num = @recipe.user_id
+    #@user = User.find(num)
   end
 
   def edit

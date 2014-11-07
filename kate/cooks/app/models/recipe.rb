@@ -4,4 +4,5 @@ class Recipe < ActiveRecord::Base
   belongs_to :user
 
   #scope :by_ingredient, joins(:ingredients)
+
 end

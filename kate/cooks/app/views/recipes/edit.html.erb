@@ -1,2 +1,33 @@
 <% provide(:title, "Update Recipe") %>
-<%= render "recipe_form" %>
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+      <%= form_tag recipes_path, method: :patch do %>
+        <%= text_field_tag "recipe_form[title]", nil, placeholder: "Title of Recipe"%>
+        <%= text_field_tag "recipe_form[servings]", nil, placeholder: "Number of Servings" %>
+        <%= text_area_tag "recipe_form[description]", nil, placeholder: "Short Description" %>
+        <%= text_area_tag "recipe_form[preparation]", nil, placeholder: "Directions" %>
+      <td>
+    </tr>
+    <% Ingredient.all.each do |ingredient| %>
+    <tr>
+      <td>
+        <%= check_box_tag "recipe_form[ingredients][][id]", ingredient.id %>
+        <%= label_tag "recipe_form[ingredients]", ingredient.name %>
+        <%= label_tag "recipe_form[ingredients]", "amount:" %>
+        <%= text_field_tag "recipe_form[ingredients][][amount]" %>
+        <%= label_tag "recipe_form[ingredients]", "unit:" %>
+        <%= text_field_tag "recipe_form[ingredients][][unit]" %>
+      </td>
+  </tr>
+    <% end %>
+    <tr>
+    <td>
+      <%= submit_tag %>
+    </td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>

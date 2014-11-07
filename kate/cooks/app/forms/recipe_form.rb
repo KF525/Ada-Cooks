@@ -30,7 +30,8 @@ class RecipeForm
       hash_num +=1
       end
     end
-
+    raise params.inspect
+    
     if !@attributes[:ingredient].nil?
       @attributes[:ingredient].each do |name, description|
         Ingredient.create(
@@ -39,7 +40,7 @@ class RecipeForm
         )
       end
     end
-    
+
     @recipe.valid? #may encounter some bugs, not a full solution - check success
   end
 

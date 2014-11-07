@@ -9,39 +9,34 @@ class RecipeForm
   end
 
   def submit
-    @recipe = Recipe.create(
-      title: @attributes[:title],
-      description: @attributes[:description],
-      servings: @attributes[:servings],
-      preparation: @attributes[:preparation],
+    @recipe = Recipe.new(
+    title: @attributes[:title],
+    description: @attributes[:description],
+    servings: @attributes[:servings],
+    preparation: @attributes[:preparation]
     )
+    @recipe.save!
 
-    hash_num = 0
-
-    if !@attributes[:ingredients].nil?
-      @attributes[:ingredients].each do |hash|
-        Usage.create(
-        ingredient_id: @attributes[:ingredients][hash_num][:id],
-        recipe_id: @recipe.id,
-        amount: @attributes[:ingredients][hash_num][:amount],
-        unit: @attributes[:ingredients][hash_num][:unit],
-        format: @attributes[:ingredients][hash_num][:format]
-      )
-      hash_num +=1
-      end
-    end
-    raise params.inspect
-    
-    if !@attributes[:ingredient].nil?
-      @attributes[:ingredient].each do |name, description|
-        Ingredient.create(
-          name: @attributes[:ingredient][:name],
-          description: @attributes[:ingredient][:description]
-        )
-      end
-    end
-
-    @recipe.valid? #may encounter some bugs, not a full solution - check success
+    handle_usages
   end
 
+  def handle_usages
+    @usages = @attributes[:usages]
+
+    if !@usages.nil?
+      @usages.each do |usage| # {ingredient_id=> 1, amount => 3, unit => cups, format => chopped}
+          @usage = Usage.new(
+          recipe_id: @recipe.id,
+          amount: usage[:amount],
+          unit: usage[:unit],
+          format: usage[:format],
+          ingredient_id: usage[:ingredient_id]
+          )
+
+        if @usage.valid?
+          @usage.save
+        end
+      end
+    end
+  end
 end

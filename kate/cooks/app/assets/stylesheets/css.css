@@ -1,0 +1,52 @@
+.header {
+  padding: 2%;
+}
+
+nav {
+  font-size: 100%;
+}
+
+footer {
+  background-color: #e8b604;
+  padding: 25% 0;
+  margin-top: 40%;
+  color: #ffffff;
+}
+
+.tagline {
+  margin-left: 70%;
+  margin-top: 10%;
+}
+
+h1 {
+  color: #e8b604;
+  text-align:right;
+  background-color: #444;
+  padding: .5%;
+  padding-right: 4%;
+  font-family: "Raleway";
+}
+
+h2 {
+  color: #444;
+  text-align: center;
+}
+
+.create {
+  color: #e8b604;
+  font-size: 150%;
+}
+
+a {
+  color: #e8b604;
+}
+
+a:hover {
+  color: #444;
+  text-decoration: none;
+}
+
+.links {
+  text-align: center;
+  margin-top: 10%;
+}

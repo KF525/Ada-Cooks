@@ -13,12 +13,17 @@
     <% Ingredient.all.each do |ingredient| %>
     <tr>
       <td>
-        <%= check_box_tag "recipe_form[ingredients][][id]", ingredient.id %>
-        <%= label_tag "recipe_form[ingredients]", ingredient.name %>
-        <%= label_tag "recipe_form[ingredients]", "amount:" %>
-        <%= text_field_tag "recipe_form[ingredients][][amount]" %>
-        <%= label_tag "recipe_form[ingredients]", "unit:" %>
-        <%= text_field_tag "recipe_form[ingredients][][unit]" %>
+        <%= check_box_tag "recipe_form[usages][][ingredient_id]", ingredient.id %>
+        <%= label_tag "recipe_form[usages]", ingredient.name %>
+
+        <%= label_tag "recipe_form[usages]", "amount:" %>
+        <%= text_field_tag "recipe_form[usages][][amount]" %>
+
+        <%= label_tag "recipe_form[usages]", "unit:" %>
+        <%= text_field_tag "recipe_form[usages][][unit]" %>
+
+        <%= label_tag "recipe_form[usages]", "format:" %>
+        <%= text_field_tag "recipe_form[usages][][format]" %>
       </td>
   </tr>
     <% end %>

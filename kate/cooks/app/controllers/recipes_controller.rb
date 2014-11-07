@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
     @recipe_form = RecipeForm.new(params[:recipe_form])
     if @recipe_form.submit
       flash[:notice] = "Your recipe was successfully created."
-      redirect_to recipes_path(@recipe_form.recipe.id)
+      redirect_to recipe_path(@recipe_form.recipe.id)
     else
       render :new
     end

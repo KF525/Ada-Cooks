@@ -5,8 +5,9 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:900' rel='stylesheet' type='text/css'>
 </head>
-<header>
+<header class="header">
   <nav>
     <%=link_to "Recipes", recipes_path %>
     <%=link_to "Search" %>
@@ -17,5 +18,10 @@
 
 <%= yield %>
 
+<footer>
+  <div class="tagline">
+    Because real food is overrated.
+  </div>
+</footer>
 </body>
 </html>

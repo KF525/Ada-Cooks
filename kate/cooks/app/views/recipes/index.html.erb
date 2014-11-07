@@ -1,4 +1,7 @@
 <% provide(:title, "Recipes") %>
+
+<h2>Imaginary Recipes</h2>
+
 <table>
   <% @recipes.each do |recipe| %>
   <tr>
@@ -10,4 +13,6 @@
 <% end %>
 </table>
 
-<%= link_to "New Recipe", new_recipe_path %>
+<div class="links">
+  <%= link_to "New Imaginary Recipe", new_recipe_path, class: "create" %>
+</div>

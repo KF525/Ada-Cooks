@@ -10,11 +10,12 @@ class RecipeForm
 
   def submit
     @recipe = Recipe.new(
-    title: @attributes[:title],
-    description: @attributes[:description],
-    servings: @attributes[:servings],
-    preparation: @attributes[:preparation]
+      title: @attributes[:title],
+      description: @attributes[:description],
+      servings: @attributes[:servings],
+      preparation: @attributes[:preparation]
     )
+
     @recipe.save!
 
     handle_usages
@@ -23,19 +24,15 @@ class RecipeForm
   def handle_usages
     @usages = @attributes[:usages]
 
-    if !@usages.nil?
-      @usages.each do |usage| # {ingredient_id=> 1, amount => 3, unit => cups, format => chopped}
-          @usage = Usage.new(
+    @usages.each do |usage| # {ingredient_id=> 1, amount => 3, unit => cups, format => chopped}
+      if !usage[:ingredient_id].nil?
+        @usage = Usage.create!(
           recipe_id: @recipe.id,
           amount: usage[:amount],
           unit: usage[:unit],
           format: usage[:format],
           ingredient_id: usage[:ingredient_id]
-          )
-
-        if @usage.valid?
-          @usage.save
-        end
+        )
       end
     end
   end

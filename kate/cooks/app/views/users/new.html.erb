@@ -1,9 +1,0 @@
-<%= form_for @user do |f| %>
-  <%=f.text_field :name, placeholder: "Name" %>
-  <%=f.text_field :email, placeholder: "Email Address" %>
-  <%=f.text_field :password_digest, placeholder: "Password" %>
-  <%=f.text_field :password_digest, placeholder: "Re-Type Password" %>
-  <%=f.submit %>
-<% end %>
-
-Already a user? <%= link_to "Log In." %>

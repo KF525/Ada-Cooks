@@ -7,4 +7,5 @@ class Recipe < ActiveRecord::Base
   validates :preparation, presence: true
   validates :description, length: { maximum: 200 }
   validates :servings, numericality: true
+
 end

@@ -1,8 +1,10 @@
 <% provide(:title, "Recipes") %>
 
-<h2>Imaginary Recipes</h2>
+<h1>ROBOT.cookbook</h1>
+<h2>Machine nom nom.</h2>
 
-<table>
+
+<table class="col-">
   <% @recipes.each do |recipe| %>
   <tr>
     <td><%= link_to recipe.title, recipe_path(id:recipe.id) %></td>
@@ -14,5 +16,5 @@
 </table>
 
 <div class="links">
-  <%= link_to "New Imaginary Recipe", new_recipe_path, class: "create" %>
+  <%= link_to "Add Recipe", new_recipe_path, class: "create" %>
 </div>

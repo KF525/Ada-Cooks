@@ -1,52 +1,57 @@
 .header {
-  padding: 2%;
-}
-
-nav {
-  font-size: 100%;
-}
-
-footer {
-  background-color: #e8b604;
-  padding: 25% 0;
-  margin-top: 40%;
-  color: #ffffff;
+  padding: 3%;
+  background-color: #ededed;
 }
 
 .tagline {
-  margin-left: 70%;
-  margin-top: 10%;
+  margin-left: 60%;
+  margin-top: 0;
 }
 
 h1 {
-  color: #e8b604;
-  text-align:right;
-  background-color: #444;
-  padding: .5%;
-  padding-right: 4%;
+  text-align: center;
+  color: #444;
   font-family: "Raleway";
 }
 
 h2 {
   color: #444;
   text-align: center;
+  font-size: 90%;
+  margin-top: -1em;
+  margin-left: 12em;
 }
 
 .create {
-  color: #e8b604;
+  color: #444;
   font-size: 150%;
 }
 
 a {
-  color: #e8b604;
+  color: #444;
 }
 
 a:hover {
-  color: #444;
+  color: #ffffff;
+  background-color: maroon;
   text-decoration: none;
 }
 
 .links {
   text-align: center;
   margin-top: 10%;
+}
+
+.form-control {
+  margin: 2% 0;
+}
+
+.submit {
+  background-color: #444;
+  color: #ffffff;
+}
+
+.submit:hover {
+  background-color: maroon;
+  color: white;
 }

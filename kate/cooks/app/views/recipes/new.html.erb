@@ -1,53 +1,56 @@
 <% provide(:title, "Create Recipe") %>
-<table>
-  <tbody>
+<div class="form-group">
+  <%= form_tag recipes_path do %>
+  <div class="col-md-12">
+    <h1>Create Recipe</h1>
+    <%= text_field_tag "recipe_form[title]", nil, placeholder: "Title of Recipe", class: "form-control" %>
+
+    <%= text_field_tag "recipe_form[servings]", nil, placeholder: "Number of Servings", class: "form-control" %>
+
+    <%= text_area_tag "recipe_form[description]", nil, placeholder: "Short Description", class: "form-control" %>
+  </div>
+
+  <table class="col-md-12">
     <tr>
-      <td>
-      <%= form_tag recipes_path do %>
-        <%= text_field_tag "recipe_form[title]", nil, placeholder: "Title of Recipe"%>
-        <%= text_field_tag "recipe_form[servings]", nil, placeholder: "Number of Servings" %>
-        <%= text_area_tag "recipe_form[description]", nil, placeholder: "Short Description" %>
-        <%= text_area_tag "recipe_form[preparation]", nil, placeholder: "Directions" %>
-      <td>
-    </tr>
-    <% Ingredient.all.each do |ingredient| %>
-    <tr>
-      <td>
+      <% Ingredient.all.each do |ingredient| %>
+        <!-- TURN THIS INTO A DROPDOWN-->
+      <td class="col-md-3">
         <%= check_box_tag "recipe_form[usages][][ingredient_id]", ingredient.id %>
         <%= label_tag "recipe_form[usages]", ingredient.name %>
-
+      </td>
+      <td class="col-md-3">
         <%= label_tag "recipe_form[usages]", "amount:" %>
         <%= text_field_tag "recipe_form[usages][][amount]" %>
-
+      </td>
+      <td class="col-md-3">
         <%= label_tag "recipe_form[usages]", "unit:" %>
         <%= text_field_tag "recipe_form[usages][][unit]" %>
-
+      </td>
+      <td class="col-md-3">
         <%= label_tag "recipe_form[usages]", "format:" %>
         <%= text_field_tag "recipe_form[usages][][format]" %>
       </td>
-  </tr>
+    </tr>
     <% end %>
-    <tr>
-    <td>
-      <%= submit_tag %>
-    </td>
-  </tr>
+  </table>
+
+  <div class="col-md-12">
+    <%= text_area_tag "recipe_form[preparation]", nil, placeholder: "Directions (Step 1, Step 2..)", class: "form-control" %>
+  </div>
+
+  <div class="col-md-12">
+    <%= submit_tag "Create Recipe", class: "form-control submit" %>
+  </div>
   <% end %>
-  </tbody>
-</table>
+</div>
 
-<table>
-  <tr>
-    <td>
-    Add Ingredient(s):
-    <%= form_tag recipes_path do %>
-      <%= text_field_tag "recipe_form[ingredient[name]]", nil, placeholder: "Ingredient Name"%>
-      <%= text_field_tag "recipe_form[ingredient[description]]", nil, placeholder: "Ingredient Description"%>
-  </td>
-  </tr>
-  <tr>
-
-  </tr>
-    <% end %>
-  </tbody>
-</table>
+<!-- FIND A WAY TO DO THIS AND REDIRECT WITHOUT LOSING CONTENT ON THE PAGE? -->
+<hr>
+<div class="col-md-12">
+  <h1>Add ingredient</h1>
+  <%= form_for @ingredient do |f| %>
+  <%=f.text_field :name, placeholder: "Name of Ingredient", class: "form-control"%>
+  <%=f.text_area :description, placeholder: "Description of Ingredient", class: "form-control" %>
+  <%= f.submit "Add Ingredient", class: "form-control submit"%>
+<% end %>
+</div>

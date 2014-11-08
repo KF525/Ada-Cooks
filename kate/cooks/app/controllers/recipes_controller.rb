@@ -6,9 +6,11 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @ingredient = Ingredient.new
   end
 
   def create
+    raise params.inspect
     @recipe_form = RecipeForm.new(params[:recipe_form])
     if @recipe_form.submit
       flash[:notice] = "Your recipe was successfully created."
@@ -27,11 +29,12 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @usages = Usage.where(recipe_id: params[:id])
   end
 
   def update
     @recipe = Recipe.find(params[:id])
-    if @recipe.update(params.require(:recipe).permit(:title, :servings, :description, :preparation))
+    if @recipe_form.update
       flash[:notice] = "Your recipe was successfully updated."
       redirect_to recipe_path(@recipe)
     else

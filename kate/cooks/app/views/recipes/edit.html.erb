@@ -1,25 +1,30 @@
-<% provide(:title, "Update Recipe") %>
+<% provide(:title, "Edit Recipe") %>
 
 <table>
   <tbody>
     <tr>
       <td>
-      <%= form_tag recipes_path, method: :patch do %>
-        <%= text_field_tag "recipe_form[title]", nil, placeholder: "Title of Recipe"%>
-        <%= text_field_tag "recipe_form[servings]", nil, placeholder: "Number of Servings" %>
-        <%= text_area_tag "recipe_form[description]", nil, placeholder: "Short Description" %>
-        <%= text_area_tag "recipe_form[preparation]", nil, placeholder: "Directions" %>
+      <%= form_tag(recipe_path, method: :patch) do %>
+        <%= text_field_tag "recipe_form[title]", @recipe.title, placeholder: "Title of Recipe"%>
+        <%= text_field_tag "recipe_form[servings]", @recipe.servings, placeholder: "Number of Servings" %>
+        <%= text_area_tag "recipe_form[description]", @recipe.description, placeholder: "Short Description" %>
+        <%= text_area_tag "recipe_form[preparation]", @recipe.preparation, placeholder: "Directions" %>
       <td>
     </tr>
-    <% Ingredient.all.each do |ingredient| %>
+    <% @usages.each do |usage| %>
     <tr>
       <td>
-        <%= check_box_tag "recipe_form[ingredients][][id]", ingredient.id %>
-        <%= label_tag "recipe_form[ingredients]", ingredient.name %>
-        <%= label_tag "recipe_form[ingredients]", "amount:" %>
-        <%= text_field_tag "recipe_form[ingredients][][amount]" %>
-        <%= label_tag "recipe_form[ingredients]", "unit:" %>
-        <%= text_field_tag "recipe_form[ingredients][][unit]" %>
+        <%= check_box_tag "recipe_form[usages][][ingredient_id]", usage.ingredient_id %>
+        <%= label_tag "recipe_form[usages]", Ingredient.find(usage.ingredient_id).name %>
+
+        <%= label_tag "recipe_form[usages]", "amount:" %>
+        <%= text_field_tag "recipe_form[usages][][amount]", usage.amount %>
+
+        <%= label_tag "recipe_form[usages]", "unit:" %>
+        <%= text_field_tag "recipe_form[usages][][unit]", usage.unit %>
+
+        <%= label_tag "recipe_form[usages]", "format:" %>
+        <%= text_field_tag "recipe_form[usages][][format]", usage.format %>
       </td>
   </tr>
     <% end %>

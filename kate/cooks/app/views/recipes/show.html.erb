@@ -1,34 +1,28 @@
 <% provide(:title, @recipe.title) %>
 
-<table>
-  <tr>
-    <td><%= @recipe.title %></td>
-    <td><%= @recipe.servings %> Servings</td>
-    <td><%= @recipe.description %></td>
-  </tr>
-</table>
+<h1><%= @recipe.title %></h1>
+<h3>Servings:</h3>
+<div class="details">Feeds <%= @recipe.servings %> Robots.</div>
+<h3>Recipe Description:</h3>
+<div class="details"><%= @recipe.description %></div>
 
-INGREDIENTS
-<table>
-  <tr>
-    <td>
-      <% @usages.each do |usage| %>
-        <%= usage.ingredient.name %>:
-    </td>
-    <td><%= usage.amount %></td>
-    <td><%= usage.unit %>,</td>
-    <td><%= usage.format %></td>
-    <td><%= button_to "Remove Ingredient", delete_usage_path(id:usage.id), method: :delete %>
-      <% end %>
-    </td>
-  </tr>
-</table>
 
-<table>
-  <td><%= @recipe.preparation %></td>
-</table>
+<h2>Ingredients</h2>
+  <% @usages.each do |usage| %>
+  <div class="ingredient-list">
+    <%= usage.amount %>
+    <%= usage.unit %> of
+    <span class="ingredient-name"><%= usage.ingredient.name %></span>
+    <%= usage.format %>
+  </div>
+<% end %>
 
-<div>
-  <%= link_to "Edit", edit_recipe_path(id:@recipe.id) %>
-  <%= button_to "Delete", delete_recipe_path(id:@recipe.id), method: :delete %>
+
+<h2>Directions</h2>
+<%= @recipe.preparation %>
+
+
+<div class="links">
+  <%= link_to "Edit #{@recipe.title}", edit_recipe_path(id:@recipe.id), class: "form-control submit" %>
+  <%= button_to "Delete #{@recipe.title}", delete_recipe_path(id:@recipe.id), method: :delete, class: "form-control delete" %>
 </div>

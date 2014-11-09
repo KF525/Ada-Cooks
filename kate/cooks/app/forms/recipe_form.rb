@@ -18,10 +18,10 @@ class RecipeForm
 
     @recipe.save!
 
-    handle_usages
+    create_usages
   end
 
-  def handle_usages
+  def create_usages
     @usages = @attributes[:usages]
 
     @usages.each do |usage| # {ingredient_id=> 1, amount => 3, unit => cups, format => chopped}
@@ -36,4 +36,9 @@ class RecipeForm
       end
     end
   end
+
+  def resubmit
+    raise params.inspect
+  end
+
 end

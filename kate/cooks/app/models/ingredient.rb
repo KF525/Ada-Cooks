@@ -7,5 +7,4 @@ class Ingredient < ActiveRecord::Base
   def self.alphabetize
     all.sort {|a, b| a.name <=> b.name}
   end
-
 end

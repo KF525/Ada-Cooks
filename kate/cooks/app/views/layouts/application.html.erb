@@ -8,9 +8,12 @@
   <link href='http://fonts.googleapis.com/css?family=Raleway:900' rel='stylesheet' type='text/css'>
 </head>
 <header class="header">
+  <h1><%= link_to "hungry.ROBOT.", recipes_path, class: "logo" %></h1>
+  <div class="tagline">Machine nom nom.</div>
   <nav>
     <%=link_to "Recipes", recipes_path %>
-    <%=link_to "Search" %>
+    <%=link_to "New Recipe", new_recipe_path %>
+    <%=link_to "Search", nil %>
   </nav>
 </header>
 <body class="main col-md-12">

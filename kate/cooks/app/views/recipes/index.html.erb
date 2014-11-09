@@ -1,20 +1,26 @@
 <% provide(:title, "Recipes") %>
 
-<h1>ROBOT.cookbook</h1>
-<h2>Machine nom nom.</h2>
 
 
-<table class="col-">
-  <% @recipes.each do |recipe| %>
-  <tr>
-    <td><%= link_to recipe.title, recipe_path(id:recipe.id) %></td>
-  </tr>
-  <tr>
-    <td><%= recipe.description %></td>
-  </tr>
-<% end %>
-</table>
-
-<div class="links">
-  <%= link_to "Add Recipe", new_recipe_path, class: "create" %>
+<div class="table-responsive">
+  <table class="table-condensed table-bordered">
+    <thead>
+      <td>Robot Recipe</td>
+      <td>Servings</td>
+      <td>Recipe Description</td>
+    </thead>
+    <% @recipes.each do |recipe| %>
+    <tr>
+      <td>
+        <%= link_to recipe.title, recipe_path(id:recipe.id) %>
+      </td>
+      <td>
+        Feeds <%=recipe.servings %> robots.
+      </td>
+      <td>
+        <%= recipe.description %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
 </div>

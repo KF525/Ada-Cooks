@@ -1,20 +1,19 @@
+/* GLOBAL CSS */
+
 .header {
-  padding: 3%;
   background-color: #ededed;
+  margin-bottom: 4%;
+  padding: 1%;
 }
 
-.tagline {
-  margin-left: 60%;
-  margin-top: 0;
-}
-
-h1 {
+.logo {
   text-align: center;
   color: #444;
   font-family: "Raleway";
+  font-size: 135%;
 }
 
-h2 {
+.tagline {
   color: #444;
   text-align: center;
   font-size: 90%;
@@ -22,9 +21,39 @@ h2 {
   margin-left: 12em;
 }
 
-.create {
+nav {
+  background-color: #444;
+  margin-top: 2%;
+}
+
+nav a {
+  color: #ffffff;
+  padding: 0 2%;
+}
+
+footer {
+  margin-top: 10%;
+}
+
+h1 {
+  text-align: center;
   color: #444;
+  font-family: "Raleway";
+  font-size: 200%;
+}
+
+h2 {
+  text-align: center;
+  color: #444;
+  font-family: "Raleway";
   font-size: 150%;
+}
+
+h3 {
+  text-align: center;
+  color: #444;
+  font-family: "Raleway";
+  font-size: 100%;
 }
 
 a {
@@ -37,6 +66,13 @@ a:hover {
   text-decoration: none;
 }
 
+
+.create {
+  color: #444;
+  font-size: 150%;
+}
+
+
 .links {
   text-align: center;
   margin-top: 10%;
@@ -46,12 +82,48 @@ a:hover {
   margin: 2% 0;
 }
 
+.table-condensed {
+  margin: 0 auto;
+}
+
+thead {
+  background-color: #444;
+  color: #ffffff;
+}
+
+/* NEW RECIPE */
+
 .submit {
   background-color: #444;
   color: #ffffff;
 }
 
 .submit:hover {
+  background-color: #ededed;
+  color: #444;
+}
+
+/* SHOW PAGE*/
+
+.details {
+  text-align: center;
+}
+
+.ingredient-list {
+  text-align:center;
+}
+
+.ingredient-name {
+  font-weight: 900;
+  color: #444;
+}
+
+.delete {
   background-color: maroon;
-  color: white;
+  color: #ffffff;
+}
+
+.delete:hover {
+  background-color: #ededed;
+  color: maroon;
 }

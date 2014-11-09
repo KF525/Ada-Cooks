@@ -15,17 +15,17 @@
     <% @ingredients.each do |ingredient|%>
     <tr>
       <td class="col-md-3">
-        <%= number_field_tag "recipe_form[usages][][amount]", 0 %>
-      </td>
-      <td class="col-md-3">
-        <%= text_field_tag "recipe_form[usages][][unit]", nil, placeholder: "unit of measurement" %>
-      </td>
-      <td class="col-md-3">
-        <%= text_field_tag "recipe_form[usages][][format]", nil, placeholder: "prep (e.g. chopped)" %>
-      </td>
-      <td class="col-md-3">
-        <%= check_box_tag "recipe_form[usages][][ingredient_id]", ingredient.id %>
+        <%= check_box_tag "recipe_form[usages][#{ingredient.id}][checked]", true %>
         <%= label_tag "recipe_form[usages]", ingredient.name %>
+      </td>
+      <td class="col-md-3">
+        <%= number_field_tag "recipe_form[usages][#{ingredient.id}][amount]", 0 %>
+      </td>
+      <td class="col-md-3">
+        <%= text_field_tag "recipe_form[usages][#{ingredient.id}][unit]", nil, placeholder: "unit of measurement" %>
+      </td>
+      <td class="col-md-3">
+        <%= text_field_tag "recipe_form[usages][#{ingredient.id}][format]", nil, placeholder: "prep (e.g. chopped)" %>
       </td>
     </tr>
     <% end %>

@@ -13,10 +13,10 @@
 
   <div class="table-responsive">
     <table class="col-md-12 table-condensed">
-      <% @usages.each do |usage|%>
+      <% @usages.each do |usage| %>
       <tr>
         <td class="col-md-3">
-          <%= check_box_tag "recipe_form[usages][#{usage.ingredient_id}][checked]", true %>
+          <%= check_box_tag "recipe_form[usages][#{usage.ingredient_id}][checked]", "true", true %>
           <%= label_tag "recipe_form[usages]", Ingredient.find(usage.ingredient_id).name %>
         </td>
         <td class="col-md-3">
@@ -27,6 +27,28 @@
         </td>
         <td class="col-md-3">
           <%= text_field_tag "recipe_form[usages][#{usage.ingredient_id}][format]", usage.format, placeholder: "prep (e.g. chopped)" %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="table-responsive">
+    <table class="col-md-12 table condensed">
+      <% @unused_ingredients.each do |ingredient| %>
+      <tr>
+        <td class="col-md-3">
+          <%= check_box_tag "recipe_form[usages][#{ingredient.id}][checked]", true %>
+          <%= label_tag "recipe_form[usages]", ingredient.name %>
+        </td>
+        <td class="col-md-3">
+          <%= number_field_tag "recipe_form[usages][#{ingredient.id}][amount]", 0 %>
+        </td>
+        <td class="col-md-3">
+          <%= text_field_tag "recipe_form[usages][#{ingredient.id}][unit]", nil, placeholder: "unit of measurement" %>
+        </td>
+        <td class="col-md-3">
+          <%= text_field_tag "recipe_form[usages][#{ingredient.id}][format]", nil, placeholder: "prep (e.g. chopped)" %>
         </td>
       </tr>
       <% end %>

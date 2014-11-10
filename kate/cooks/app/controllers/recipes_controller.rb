@@ -29,8 +29,6 @@ class RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find(params[:id])
     @usages = Usage.where(recipe_id: params[:id])
-
-    #@ingredients = Ingredient.all.where.no("id = ?", @usage_ingredients_id)
     @ingredient = Ingredient.new
 
     @usage_ingredients_id = []
@@ -38,6 +36,8 @@ class RecipesController < ApplicationController
     @usages.each do |usage|
       @usage_ingredients_id << usage.ingredient_id
     end
+
+    @unused_ingredients = Ingredient.all.where.not(id: @usage_ingredients_id )
   end
 
   def update

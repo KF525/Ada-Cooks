@@ -27,8 +27,8 @@ class RecipeForm
     @usages.keys.each do |key| #{ 1 => {amount => 3, unit => cups, format => chopped}
       if @usages[key][:checked]
         @usage = Usage.create!(
-          ingredient_id: key,
-          recipe_id: @recipe.id,
+          ingredient_id: key.to_i,
+          recipe_id: @recipe.id.to_i,
           amount: @usages[key][:amount],
           unit: @usages[key][:unit],
           format: @usages[key][:format],
@@ -46,15 +46,30 @@ class RecipeForm
     preparation: @attributes[:preparation]
     )
 
-    #create_usages
-
-    #destroy_usages
+    destroy_usages
+    update_usages
+    create_usages
   end
 
-  def recipe_params
+  def destroy_usages
+    @usages = @attributes[:usages]
 
+    @usages.keys.each do |key|
+      if !@usages[key][:checked]
+        delete_usages = Usage.where("ingredient_id = ? AND recipe_id = ?", key, "#{@recipe.id}")
+        delete_usages.each do |usage|
+          usage.destroy
+        end
+      end
+    end
   end
 
-  def usage_params
+  def update_usages
+    @recipe.usages.each do |usage|
+        usage.amount = @attributes[:usages][usage.ingredient_id][:amount],
+        usage.unit = @attributes[:usages][usage.ingredient_id][:unit],
+        usage.format = @attributes[:usages][usage.ingredient_id][:format]
+        usage.save
+    end
   end
 end
